@@ -126,7 +126,9 @@
 .columns.stats {
   padding: 120px 0 48px;
 
+  /* top-aligned so the rules line up whatever the heading length */
   .row {
+    align-items: start;
     gap: 0;
   }
 
