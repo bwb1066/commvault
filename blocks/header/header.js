@@ -168,6 +168,26 @@ async function decorateActionSection(section) {
   section.classList.add('actions-section');
 }
 
+/**
+ * commvault.com splits header actions in two: a utility strip above the
+ * brand row (plain links + language) and CTA buttons beside the nav.
+ * Authored buttons (bold/italic links) go to the CTAs, everything else to
+ * the utility strip.
+ * @param {Element} section The actions section
+ */
+function splitActionSection(section) {
+  const content = section?.querySelector(':scope > .default-content');
+  if (!content) return;
+  const utility = document.createElement('div');
+  utility.className = 'utility-nav';
+  const ctas = document.createElement('div');
+  ctas.className = 'cta-nav';
+  for (const child of [...content.children]) {
+    (child.querySelector('.btn') ? ctas : utility).append(child);
+  }
+  content.append(utility, ctas);
+}
+
 async function decorateHeader(fragment) {
   const sections = fragment.querySelectorAll(':scope > .section');
   if (sections[0]) decorateBrandSection(sections[0]);
@@ -177,6 +197,7 @@ async function decorateHeader(fragment) {
   for (const pattern of HEADER_ACTIONS) {
     decorateAction(fragment, pattern);
   }
+  splitActionSection(sections[2]);
 }
 
 /**
