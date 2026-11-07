@@ -21,6 +21,7 @@ header {
   color: var(--hdr-text);
   color-scheme: dark;
   font-family: var(--cv-font);
+  -webkit-font-smoothing: antialiased;
 
   ul {
     margin: 0;
@@ -445,6 +446,8 @@ header {
 
     /* ---------- primary nav ---------- */
     .main-nav-section {
+      align-self: center;
+
       .main-nav-list {
         display: flex;
         height: 100%;
@@ -459,9 +462,9 @@ header {
       }
 
       .main-nav-link {
-        gap: 4px;
+        gap: 0;
         min-height: 0;
-        padding: 8px;
+        padding: 8px 0 8px 8px;
         text-decoration: underline 2px transparent;
         text-underline-offset: 12px;
         transition: text-decoration-color 0.3s ease-in-out;
@@ -544,8 +547,21 @@ header {
       gap: 12px;
       padding: 0;
 
+      /* commvault's btn--compact: 32px tall, 13px, 16px padding, 12px icon */
       .btn {
-        padding-inline: 30px;
+        gap: 12px;
+        min-height: 32px;
+        padding: 0 16px;
+        font-size: 13px;
+      }
+
+      .btn-secondary {
+        padding-right: 12px;
+
+        &::after {
+          width: 12px;
+          height: 12px;
+        }
       }
 
       /* Contact us reads as a text button on desktop */
@@ -564,9 +580,21 @@ header {
 
     /* ---------- utility strip ---------- */
     .utility-nav {
-      justify-self: end;
+      place-self: end;
       gap: 24px;
       padding: 0;
+
+      /* language reads as a text link, like commvault.com */
+      .action-wrapper button {
+        .icon {
+          display: none;
+        }
+
+        .text {
+          width: auto;
+          height: auto;
+        }
+      }
     }
 
     .actions-section > .block-content {
