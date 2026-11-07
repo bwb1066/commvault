@@ -438,6 +438,24 @@ main .section {
     color: var(--cv-white);
   }
 
+  /* commvault.com t-fog blades: section-metadata style "fog" */
+  &.fog {
+    background-color: #f3f4fa;
+    color: var(--cv-black);
+    color-scheme: light;
+  }
+
+  /* style "gradient-heading": crocus → rose text on the section heading */
+  &.gradient-heading > .default-content > h2 {
+    background: linear-gradient(147deg, var(--cv-crocus), #ea2c63);
+    background-clip: text;
+    color: transparent;
+
+    /* shrink to the text so the gradient spans the words, not the container */
+    width: fit-content;
+    margin-inline: auto;
+  }
+
   /* section text sits in the 82rem container */
   > .default-content {
     max-width: min(82rem, 100% - 32px);

@@ -210,3 +210,56 @@
     }
   }
 }
+
+/* logos (blade-logo-grid, expanded + center): natural-size logos in a centred wrap */
+.columns.logos {
+  width: min(82rem, 100% - 32px);
+  margin: 0 auto;
+  padding: 24px 0 48px;
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px 48px;
+  }
+
+  .col {
+    display: flex;
+    flex: 0 0 calc(25% - 0.86rem);
+    align-items: center;
+    justify-content: center;
+  }
+
+  picture {
+    display: contents;
+  }
+
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (width >= 768px) {
+  .columns.logos {
+    .row {
+      column-gap: 80px;
+    }
+
+    .col {
+      flex-basis: calc(14.2857% - 0.86rem);
+    }
+  }
+}
+
+@media (width >= 1100px) {
+  .columns.logos {
+    width: min(82rem, 100% - 128px);
+
+    .col {
+      flex-basis: calc(12.5% - 0.86rem);
+    }
+  }
+}
