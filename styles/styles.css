@@ -54,6 +54,22 @@
     U+FFFD;
 }
 
+@font-face {
+  font-family: "Galano Grotesque";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/styles/fonts/galano-grotesque-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Galano Grotesque";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/styles/fonts/galano-grotesque-medium.woff2") format("woff2");
+}
+
 :root {
   /* grid */
   --grid-container-width: 83.4%;
@@ -167,7 +183,7 @@
   --color-shaded: light-dark(#f9f9f9, #111);
 
   /* fonts */
-  --font-family: montserrat, "Trebuchet MS", sans-serif;
+  --font-family: "Galano Grotesque", "Helvetica Neue", helvetica, arial, sans-serif;
 
   /* headings */
   --heading-font-size-xxl: 32.44px;
