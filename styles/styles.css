@@ -70,6 +70,18 @@
   src: url("/styles/fonts/galano-grotesque-medium.woff2") format("woff2");
 }
 
+/* metric-matched fallback: Arial (or its metric twin Liberation Sans) scaled to
+   Galano's advance width (42.53 vs 39.19 em/sample) with Galano's 1000/350
+   ascent/descent, so the swap to the web font doesn't reflow (CLS) */
+@font-face {
+  font-family: "Galano Grotesque Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans");
+  size-adjust: 108.53%;
+  ascent-override: 92.14%;
+  descent-override: 32.25%;
+  line-gap-override: 0%;
+}
+
 :root {
   /* grid */
   --grid-container-width: 83.4%;
@@ -183,7 +195,7 @@
   --color-shaded: light-dark(#f9f9f9, #111);
 
   /* fonts */
-  --font-family: "Galano Grotesque", "Helvetica Neue", helvetica, arial, sans-serif;
+  --font-family: "Galano Grotesque", "Galano Grotesque Fallback", "Helvetica Neue", helvetica, arial, sans-serif;
 
   /* headings */
   --heading-font-size-xxl: 32.44px;
@@ -209,7 +221,7 @@
   --breadcrumb-height: 24px;
 
   /* commvault.com brand tokens (commvault-2025 theme) */
-  --cv-font: "Galano Grotesque", "Helvetica Neue", helvetica, arial, sans-serif;
+  --cv-font: "Galano Grotesque", "Galano Grotesque Fallback", "Helvetica Neue", helvetica, arial, sans-serif;
   --cv-black: #000;
   --cv-white: #fff;
   --cv-crocus: #844896;

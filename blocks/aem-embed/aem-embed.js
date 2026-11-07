@@ -102,8 +102,20 @@ const loadEmbed = (block, link, autoplay) => {
   block.classList.add('aem-embed-is-loaded');
 };
 
-export default function decorate(block) {
-  const placeholder = block.querySelector('picture');
+// the placeholder never renders wider than ~900px, so don't fetch the 2000px rendition
+const PLACEHOLDER_BREAKPOINTS = [{ media: '(min-width: 600px)', width: '1000' }, { width: '750' }];
+
+export default async function decorate(block) {
+  let placeholder = block.querySelector('picture');
+  const placeholderImg = placeholder?.querySelector('img');
+  if (placeholderImg?.src.includes('/media_')) {
+    const { createPicture } = await import('../../scripts/utils/picture.js');
+    placeholder = createPicture({
+      src: placeholderImg.src,
+      alt: placeholderImg.alt,
+      breakpoints: PLACEHOLDER_BREAKPOINTS,
+    });
+  }
   const link = block.querySelector('a').href;
   block.textContent = '';
 

@@ -64,7 +64,10 @@ async function handleBackground(background, section) {
     // No MP4 support
     if (mediaUrl.pathname.endsWith('.mp4')) return;
     const { createPicture } = await import('../../scripts/utils/picture.js');
-    const pic = createPicture({ src: mediaUrl.href });
+    // the first section's background is the LCP: load it eagerly, high priority
+    const eager = section === section.parentElement?.querySelector(':scope > .section');
+    const pic = createPicture({ src: mediaUrl.href, eager });
+    if (eager) pic.querySelector('img')?.setAttribute('fetchpriority', 'high');
     section.classList.add('has-background');
     pic.classList.add('section-background');
     section.prepend(pic);
