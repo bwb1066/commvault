@@ -1,57 +1,272 @@
+/* Footer — commvault.com (commvault-2025 theme, .site-footer.t-dark) */
 footer {
+  --ftr-border: var(--cv-grey-700);
+  --ftr-brand: var(--cv-crocus-400);
+  --icon-facebook: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M29.5312 14.9995C29.5312 6.97217 23.0273 0.468262 15 0.468262C6.97266 0.468262 0.46875 6.97217 0.46875 14.9995C0.46875 22.2522 5.78262 28.264 12.7295 29.355V19.2001H9.03809V14.9995H12.7295V11.7979C12.7295 8.15635 14.8975 6.14482 18.218 6.14482C19.8082 6.14482 21.4711 6.42842 21.4711 6.42842V10.0026H19.6383C17.8336 10.0026 17.2705 11.1229 17.2705 12.272V14.9995H21.3006L20.6561 19.2001H17.2705V29.355C24.2174 28.264 29.5312 22.2522 29.5312 14.9995Z' fill='currentColor'%3E%3C/path%3E%3C/svg%3E");
+  --icon-instagram: url("data:image/svg+xml,%3Csvg viewBox='0 0 27 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.1309 7.26123C9.4043 7.26123 6.39844 10.2671 6.39844 13.9937C6.39844 17.7202 9.4043 20.7261 13.1309 20.7261C16.8574 20.7261 19.8633 17.7202 19.8633 13.9937C19.8633 10.2671 16.8574 7.26123 13.1309 7.26123ZM13.1309 18.3706C10.7227 18.3706 8.75391 16.4077 8.75391 13.9937C8.75391 11.5796 10.7168 9.6167 13.1309 9.6167C15.5449 9.6167 17.5078 11.5796 17.5078 13.9937C17.5078 16.4077 15.5391 18.3706 13.1309 18.3706ZM21.709 6.98584C21.709 7.85889 21.0059 8.55615 20.1387 8.55615C19.2656 8.55615 18.5684 7.85303 18.5684 6.98584C18.5684 6.11865 19.2715 5.41553 20.1387 5.41553C21.0059 5.41553 21.709 6.11865 21.709 6.98584ZM26.168 8.57959C26.0684 6.47607 25.5879 4.61279 24.0469 3.07764C22.5117 1.54248 20.6484 1.06201 18.5449 0.956543C16.377 0.833496 9.87891 0.833496 7.71094 0.956543C5.61328 1.05615 3.75 1.53662 2.20898 3.07178C0.667969 4.60693 0.193359 6.47021 0.0878906 8.57373C-0.0351562 10.7417 -0.0351562 17.2397 0.0878906 19.4077C0.1875 21.5112 0.667969 23.3745 2.20898 24.9097C3.75 26.4448 5.60742 26.9253 7.71094 27.0308C9.87891 27.1538 16.377 27.1538 18.5449 27.0308C20.6484 26.9312 22.5117 26.4507 24.0469 24.9097C25.582 23.3745 26.0625 21.5112 26.168 19.4077C26.291 17.2397 26.291 10.7476 26.168 8.57959ZM23.3672 21.7339C22.9102 22.8823 22.0254 23.7671 20.8711 24.23C19.1426 24.9155 15.041 24.7573 13.1309 24.7573C11.2207 24.7573 7.11328 24.9097 5.39062 24.23C4.24219 23.7729 3.35742 22.8882 2.89453 21.7339C2.20898 20.0054 2.36719 15.9038 2.36719 13.9937C2.36719 12.0835 2.21484 7.97607 2.89453 6.25342C3.35156 5.10498 4.23633 4.22021 5.39062 3.75732C7.11914 3.07178 11.2207 3.22998 13.1309 3.22998C15.041 3.22998 19.1484 3.07764 20.8711 3.75732C22.0195 4.21436 22.9043 5.09912 23.3672 6.25342C24.0527 7.98193 23.8945 12.0835 23.8945 13.9937C23.8945 15.9038 24.0527 20.0112 23.3672 21.7339Z' fill='currentColor'%3E%3C/path%3E%3C/svg%3E");
+  --icon-linkedin: url("data:image/svg+xml,%3Csvg viewBox='0 0 27 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.12578 26.2499H0.683594V8.72451H6.12578V26.2499ZM3.40176 6.33389C1.66152 6.33389 0.25 4.89248 0.25 3.15225C0.25 2.31635 0.582059 1.51469 1.17313 0.923617C1.7642 0.332547 2.56586 0.000488281 3.40176 0.000488281C4.23766 0.000488281 5.03932 0.332547 5.63039 0.923617C6.22146 1.51469 6.55352 2.31635 6.55352 3.15225C6.55352 4.89248 5.14141 6.33389 3.40176 6.33389ZM26.4941 26.2499H21.0637V17.7187C21.0637 15.6854 21.0227 13.078 18.2342 13.078C15.4047 13.078 14.9711 15.287 14.9711 17.5722V26.2499H9.53477V8.72451H14.7543V11.1151H14.8305C15.557 9.73818 17.3318 8.28506 19.9797 8.28506C25.4875 8.28506 26.5 11.912 26.5 16.6229V26.2499H26.4941Z' fill='currentColor'%3E%3C/path%3E%3C/svg%3E");
+  --icon-twitter: url("data:image/svg+xml,%3Csvg viewBox='0 0 31 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1836_4214)'%3E%3Cpath d='M0.323143 1L11.9058 16.223L0.25 28.6H2.87325L13.0779 17.7638L21.323 28.6H30.25L18.0156 12.5207L28.8648 1H26.2415L16.8436 10.98L9.25018 1H0.323143ZM4.18083 2.89934H8.28193L26.3917 26.7004H22.2906L4.18083 2.89934Z' fill='currentColor'%3E%3C/path%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1836_4214'%3E%3Crect width='30' height='30' fill='white' transform='translate(0.25)'%3E%3C/rect%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  --icon-youtube: url("data:image/svg+xml,%3Csvg viewBox='0 0 34 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32.4564 7.27049C32.0883 5.88475 31.004 4.79338 29.6272 4.42301C27.1317 3.75 17.125 3.75 17.125 3.75C17.125 3.75 7.11838 3.75 4.62281 4.42301C3.24604 4.79344 2.1617 5.88475 1.79367 7.27049C1.125 9.78223 1.125 15.0227 1.125 15.0227C1.125 15.0227 1.125 20.2632 1.79367 22.775C2.1617 24.1607 3.24604 25.2066 4.62281 25.577C7.11838 26.25 17.125 26.25 17.125 26.25C17.125 26.25 27.1317 26.25 29.6272 25.577C31.004 25.2066 32.0883 24.1607 32.4564 22.775C33.125 20.2632 33.125 15.0227 33.125 15.0227C33.125 15.0227 33.125 9.78223 32.4564 7.27049ZM13.8523 19.7807V10.2647L22.2159 15.0229L13.8523 19.7807Z' fill='currentColor'%3E%3C/path%3E%3C/svg%3E");
+
+  display: block;
+  background: var(--cv-black);
+  color: var(--cv-white);
+  color-scheme: dark;
+  font-family: var(--cv-font);
+  font-size: 16px;
+  line-height: 1.32;
+  text-align: center;
+
   a {
+    color: inherit;
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
-  .footer-content {
-    max-width: var(--grid-container-width);
-    margin: 48px auto;
-    font-size: 14px;
-  }
-
-  .section-legal ul {
+  ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .section-copyright p {
+  p,
+  li {
     margin: 0;
   }
 
-  .section {
+  .footer-content {
+    display: grid;
+    gap: 24px 16px;
+    margin: 0 16px;
+    padding: 32px 0;
+  }
+
+  .section,
+  .default-content {
+    margin: 0;
+    padding: 0;
+    max-width: none;
+  }
+
+  .footer-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* ---------- brand: logo, social, Contact Us ---------- */
+  .section-brand .default-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    display: block;
+    padding-bottom: 16px;
+
+    svg {
+      display: block;
+      width: 10rem;
+      height: calc(10rem * 223.37 / 1145.68);
+    }
+  }
+
+  .footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+
+    a {
+      display: flex;
+      padding: 4px;
+      border-radius: 50%;
+      color: var(--cv-grey-400);
+      transition: color 0.2s ease-in-out;
+
+      &::before {
+        content: "";
+        width: 24px;
+        height: 24px;
+        background-color: currentcolor;
+        mask: var(--icon) center / 24px no-repeat;
+      }
+
+      &:hover {
+        color: var(--ftr-brand);
+      }
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px var(--cv-focus-ring);
+      }
+    }
+
+    .social-facebook {
+      --icon: var(--icon-facebook);
+    }
+
+    .social-instagram {
+      --icon: var(--icon-instagram);
+    }
+
+    .social-linkedin {
+      --icon: var(--icon-linkedin);
+    }
+
+    .social-twitter {
+      --icon: var(--icon-twitter);
+    }
+
+    .social-youtube {
+      --icon: var(--icon-youtube);
+    }
+  }
+
+  /* authored bold link → AK .btn-primary; commvault's dark compact button */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    margin: 0;
+    padding: 8px 22px;
+    border: 2px solid var(--cv-white);
+    border-radius: 24px;
+    background: var(--cv-black);
+    color: var(--cv-white);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+    &:hover {
+      border-color: var(--ftr-brand);
+      background: var(--ftr-brand);
+      color: var(--cv-black);
+      text-decoration: none;
+    }
+  }
+
+  /* ---------- link columns ---------- */
+  .section-links {
+    h3 {
+      margin: 0 0 16px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.32;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  /* ---------- legal + copyright ---------- */
+  .section-legal {
+    padding-top: 24px;
+    border-top: 1px solid var(--ftr-border);
+    font-size: 13px;
+
     .default-content {
-      max-width: initial;
-      margin: initial;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* the © line leads the legal row, as on commvault.com */
+    p {
+      order: -1;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
     }
   }
 }
 
-@media (width >= 900px) {
+@media (width >= 768px) {
   footer {
-    margin: 0;
+    text-align: left;
 
-    .section-legal {
-      display: flex;
-      justify-content: end;
-      gap: var(--spacing-xl);
-      margin-bottom: 24px;
+    .footer-content {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 0 24px;
+    }
 
-      ul {
-        display: flex;
-        justify-content: end;
-        gap: var(--spacing-xl);
-      }
+    .section-brand {
+      grid-column: 1 / -1;
 
-      li {
-        margin: 0;
+      .default-content {
+        align-items: flex-start;
       }
     }
 
-    .section-copyright {
-      display: flex;
-      justify-content: end;
-      gap: var(--spacing-xl);
+    .footer-logo {
+      padding-bottom: 0;
+    }
+
+    .footer-social {
+      justify-content: flex-start;
+
+      a::before {
+        width: 32px;
+        height: 32px;
+        mask-size: 32px;
+      }
+    }
+
+    .section-legal {
+      grid-column: 1 / -1;
+
+      .default-content,
+      ul {
+        flex-flow: row wrap;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (width >= 1100px) {
+  footer {
+    .footer-content {
+      /* brand 4/12, three link columns across the next 7/12 */
+      grid-template-columns: minmax(0, 12fr) repeat(3, minmax(0, 7fr)) minmax(0, 3fr);
+      width: min(var(--cv-container), 100% - 128px);
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    .section-brand {
+      grid-column: auto;
+    }
+
+    .section-links {
+      padding-bottom: 32px;
+    }
+
+    .section-legal {
+      grid-column: 1 / -1;
+
+      .default-content,
+      ul {
+        justify-content: flex-start;
+      }
     }
   }
 }
