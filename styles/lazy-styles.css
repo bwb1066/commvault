@@ -1,0 +1,39 @@
+/*
+ * Fallback floating trigger for the Brand Concierge widget — only used when
+ * the target site's header has no existing icon affordance (e.g. a search
+ * icon) to attach a sibling sparkle button to instead. See SKILL.md.
+ */
+.chatbot-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--cta-color, #1d1d1d);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+  transition: background-color 0.15s, transform 0.15s;
+}
+
+.chatbot-bubble:hover {
+  background-color: var(--cta-color-hover, #000);
+  transform: scale(1.05);
+}
+
+.chatbot-bubble svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* commvault: crocus bubble (crocus-500 on hover) */
+:root {
+  --cta-color: var(--cv-crocus);
+  --cta-color-hover: #784188;
+}
