@@ -1,27 +1,123 @@
+/* Cards — commvault.com blade-card-grid (.card.vertical.bg-black) */
+.aem-cards {
+  width: min(82rem, 100% - 32px);
+  margin: 0 auto;
+  padding-bottom: 32px;
+  font-family: var(--cv-font);
+  text-align: left;
+}
+
 .aem-cards > ul {
-  list-style: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  list-style: none;
 }
 
 .aem-cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
-}
-
-.aem-cards .aem-cards-card-body {
-  margin: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--cv-black);
+  color: var(--cv-white);
 }
 
 .aem-cards .aem-cards-card-image {
   line-height: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
 }
 
-.aem-cards > ul > li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.aem-cards .aem-cards-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  padding: 32px 32px 16px;
+
+  > * {
+    margin: 0;
+  }
+
+  /* eyebrow */
+  > p:first-child:not(:has(a)) {
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.875px;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: clamp(1.1875rem, 5vw + 1rem, 1.4375rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
+  }
+
+  h3 + p {
+    margin-top: 12px;
+    font-size: 1.1875rem;
+    letter-spacing: -0.01em;
+    line-height: 1.32;
+  }
+
+  /* card link: btn-text with an arrow; the whole card is the hit area */
+  > p:last-child:has(a) {
+    margin-top: auto;
+    padding-top: 16px;
+  }
+
+  > p:last-child a {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 40px;
+    border-bottom: 1px solid transparent;
+    color: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    text-decoration: none;
+    transition: border-color 0.2s ease-in-out;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    &::after {
+      content: "";
+      flex: none;
+      width: 16px;
+      height: 16px;
+      background: currentcolor;
+      mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='currentColor' stroke-width='2' d='m6.5 1.333 6.5 6.5-6.5 6.5m6.5-6.5H0' /%3E%3C/svg%3E") center / contain no-repeat;
+    }
+  }
+}
+
+.aem-cards > ul > li:hover .aem-cards-card-body > p:last-child a {
+  border-bottom-color: var(--cv-crocus);
+}
+
+@media (width >= 1100px) {
+  .aem-cards {
+    width: min(82rem, 100% - 128px);
+  }
+
+  .aem-cards > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

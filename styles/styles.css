@@ -438,6 +438,21 @@ main .section {
     color: var(--cv-white);
   }
 
+  /* section text sits in the 82rem container */
+  > .default-content {
+    max-width: min(82rem, 100% - 32px);
+    font-family: var(--cv-font);
+  }
+
+  /* section heading (.section-heading .font-heading-2xl, pb-xl) */
+  > .default-content > h2 {
+    margin: 48px 0 32px;
+    font-size: clamp(2.625rem, 5vw + 1rem, 3.5625rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
   .btn-group {
     display: flex;
     flex-wrap: wrap;
@@ -564,6 +579,10 @@ main .section.hero-vertical {
 }
 
 @media (width >= 1100px) {
+  main .section > .default-content {
+    max-width: min(82rem, 100% - 128px);
+  }
+
   main .section.hero-vertical .aem-embed {
     width: calc(min(82rem, 100% - 128px) * 2 / 3);
   }
