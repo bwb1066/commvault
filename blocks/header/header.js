@@ -125,13 +125,33 @@ function decorateMegaMenu(li) {
   return wrapper;
 }
 
+// commvault.com: desktop mega menus open on hover and the top link navigates;
+// on mobile (or touch) the top link toggles its panel
+const HOVER_NAV = matchMedia('(width >= 1100px) and (hover: hover)');
+const HOVER_CLOSE_DELAY = 150;
+
 function decorateNavItem(li) {
   li.classList.add('main-nav-item');
   const link = li.querySelector(':scope > p > a');
   if (link) link.classList.add('main-nav-link');
   const menu = decorateMegaMenu(li) || decorateMenu(li);
   if (!(menu || link)) return;
+
+  let closeTimer;
+  li.addEventListener('mouseenter', () => {
+    if (!(menu && HOVER_NAV.matches)) return;
+    clearTimeout(closeTimer);
+    if (li.classList.contains('is-open')) return;
+    closeAllMenus();
+    li.classList.add('is-open');
+  });
+  li.addEventListener('mouseleave', () => {
+    if (!HOVER_NAV.matches) return;
+    closeTimer = setTimeout(() => li.classList.remove('is-open'), HOVER_CLOSE_DELAY);
+  });
+
   link.addEventListener('click', (e) => {
+    if (HOVER_NAV.matches || !menu) return;
     e.preventDefault();
     toggleMenu(li);
   });

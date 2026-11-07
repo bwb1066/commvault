@@ -445,8 +445,15 @@ header {
     }
 
     /* ---------- primary nav ---------- */
+
+    /* items fill the 80px row so the hover zone reaches the mega menu */
     .main-nav-section {
-      align-self: center;
+      align-self: stretch;
+
+      .default-content,
+      nav {
+        height: 100%;
+      }
 
       .main-nav-list {
         display: flex;
