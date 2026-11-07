@@ -223,3 +223,52 @@
     }
   }
 }
+
+/* commvault.com cvlt-hero-vertical (text-center) CTA band: 900px copy column,
+   heading-3xl + body-lg, buttons 40px below; blade pt/pb-md + hero padding */
+main .hero.center {
+  --min-height: 0;
+
+  font-family: var(--cv-font);
+
+  .hero-foreground {
+    max-width: none;
+    padding: 64px 16px 88px;
+
+    .fg-text {
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero-heading {
+      font-size: clamp(3rem, 5vw + 1rem, 4.3125rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+    }
+
+    .hero-heading + p {
+      margin: 24px 0 0;
+      font-size: clamp(1.1875rem, 5vw + 1rem, 1.4375rem);
+      letter-spacing: -0.01em;
+      line-height: 1.32;
+    }
+
+    .btn-group {
+      justify-content: center;
+      margin: 40px 0 0;
+    }
+  }
+}
+
+@media (width >= 600px) {
+  main .hero.center .hero-foreground {
+    max-width: none;
+    margin: 0;
+
+    .fg-text {
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+  }
+}
