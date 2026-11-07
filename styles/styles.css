@@ -462,9 +462,10 @@ main .section {
     font-family: var(--cv-font);
   }
 
-  /* section heading (.section-heading .font-heading-2xl, pb-xl) */
-  > .default-content > h2 {
-    margin: 48px 0 32px;
+  /* section heading (.section-heading .font-heading-2xl, pb-xl).
+     :nth-child(n) outranks section-metadata's first/last-child margin reset */
+  > .default-content > h2:nth-child(n) {
+    margin-block: 48px 56px;
     font-size: clamp(2.625rem, 5vw + 1rem, 3.5625rem);
     font-weight: 400;
     letter-spacing: -0.02em;
