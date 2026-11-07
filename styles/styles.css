@@ -214,6 +214,7 @@
   --cv-white: #fff;
   --cv-crocus: #844896;
   --cv-crocus-200: #e7d5ef;
+  --cv-crocus-300: #d2b1e2;
   --cv-crocus-400: #c397d8;
   --cv-grey-400: #b3b5c8;
   --cv-grey-700: #5c5f6b;
@@ -424,5 +425,140 @@ aem-sidekick {
 
   &[open="true"].is-ready {
     opacity: 1;
+  }
+}
+
+/* ---------- commvault.com buttons (btn-primary / btn-secondary, btn--icon-after) ---------- */
+main .section {
+  --cv-arrow: url("data:image/svg+xml,%3Csvg viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='currentColor' stroke-width='2' d='m6.5 1.333 6.5 6.5-6.5 6.5m6.5-6.5H0' /%3E%3C/svg%3E");
+
+  .btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  &.center .btn-group {
+    justify-content: center;
+  }
+
+  a.btn-primary,
+  a.btn-secondary {
+    --btn-bg: var(--cv-black);
+    --btn-border: transparent;
+    --btn-text: var(--cv-white);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 8px 22px 8px 30px;
+    border: 2px solid var(--btn-border);
+    border-radius: 24px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    font-family: var(--cv-font);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    text-wrap: balance;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+    &::after {
+      content: "";
+      flex: none;
+      width: 16px;
+      height: 16px;
+      background: currentcolor;
+      mask: var(--cv-arrow) center / contain no-repeat;
+    }
+
+    &:hover {
+      --btn-bg: var(--cv-crocus-300);
+      --btn-text: var(--cv-black);
+    }
+  }
+
+  a.btn-secondary {
+    --btn-bg: var(--cv-white);
+    --btn-border: var(--cv-black);
+    --btn-text: var(--cv-black);
+
+    &:hover {
+      --btn-bg: var(--cv-black);
+      --btn-border: var(--cv-black);
+      --btn-text: var(--cv-white);
+    }
+  }
+
+  &.dark-scheme:not(.hero-vertical) {
+    a.btn-primary {
+      --btn-bg: var(--cv-white);
+      --btn-text: var(--cv-black);
+
+      &:hover {
+        --btn-bg: var(--cv-crocus-200);
+      }
+    }
+
+    a.btn-secondary {
+      --btn-bg: var(--cv-black);
+      --btn-border: var(--cv-white);
+      --btn-text: var(--cv-white);
+
+      &:hover {
+        --btn-bg: var(--cv-white);
+        --btn-border: var(--cv-white);
+        --btn-text: var(--cv-black);
+      }
+    }
+  }
+}
+
+/* ---------- hero section (commvault.com cvlt-hero-vertical) ----------
+   DA: section-metadata style "hero-vertical, dark-scheme, center", background = image */
+main .section.hero-vertical {
+  padding: 96px 0 32px;
+  background: var(--cv-black);
+  color: var(--cv-white);
+  font-family: var(--cv-font);
+
+  /* the background picture is positioned by section-metadata (has-background) */
+
+  > .default-content {
+    max-width: min(900px, 100% - 32px);
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    font-size: clamp(3rem, 5vw + 1rem, 4.3125rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  p {
+    margin: 0;
+    font-size: clamp(1.1875rem, 5vw + 1rem, 1.4375rem);
+    letter-spacing: -0.01em;
+    line-height: 1.32;
+  }
+
+  .btn-group {
+    padding: 40px 0 32px;
+  }
+
+  .aem-embed {
+    width: min(82rem, 100% - 32px);
+    max-width: none;
+    margin: 0 auto;
+  }
+}
+
+@media (width >= 1100px) {
+  main .section.hero-vertical .aem-embed {
+    width: calc(min(82rem, 100% - 128px) * 2 / 3);
   }
 }
