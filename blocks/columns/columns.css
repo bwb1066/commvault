@@ -100,3 +100,111 @@
     }
   }
 }
+
+/* ---------- commvault.com variants ---------- */
+
+/* shared: 82rem container, Galano, commvault type scale */
+.columns.stats,
+.columns.media {
+  width: min(82rem, 100% - 32px);
+  margin: 0 auto;
+  font-family: var(--cv-font);
+
+  h2 {
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+/* stats (cvlt-stats-card): a 1px rule over each heading-md statement */
+.columns.stats {
+  padding: 120px 0 48px;
+
+  .row {
+    gap: 0;
+  }
+
+  .col {
+    padding-bottom: 32px;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 1px;
+      margin-bottom: 24px;
+      background: currentcolor;
+    }
+  }
+
+  h2 {
+    margin-bottom: 16px;
+    font-size: clamp(1.75rem, 5vw + 1rem, 2.0625rem);
+  }
+}
+
+/* media (blade-content-media): heading-xl + body-lg copy beside an image */
+.columns.media {
+  padding: 48px 0;
+
+  .row {
+    gap: 24px;
+  }
+
+  h2 {
+    font-size: clamp(2.5rem, 5vw + 1rem, 3rem);
+  }
+
+  h2 + p {
+    margin-top: 24px;
+    font-size: clamp(1.1875rem, 5vw + 1rem, 1.4375rem);
+    letter-spacing: -0.01em;
+    line-height: 1.32;
+  }
+
+  p:has(> .btn) {
+    margin-top: 40px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (width >= 900px) and (width < 1100px) {
+  .columns.stats .row,
+  .columns.media .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (width >= 1100px) {
+  .columns.stats,
+  .columns.media {
+    width: min(82rem, 100% - 128px);
+  }
+
+  .columns.stats .row {
+    grid-template-columns: repeat(var(--child-count), minmax(0, 1fr));
+    column-gap: 80px;
+  }
+
+  /* text on 5 of 12 columns, image from column 7 to the end */
+  .columns.media .row {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+
+    .col-1 {
+      grid-column: 1 / span 5;
+    }
+
+    .col-2 {
+      grid-column: 7 / span 6;
+    }
+  }
+}
