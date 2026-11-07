@@ -191,7 +191,27 @@
   /* misc */
   --header-height: 64px;
   --breadcrumb-height: 24px;
+
+  /* commvault.com brand tokens (commvault-2025 theme) */
+  --cv-font: "Galano Grotesque", "Helvetica Neue", helvetica, arial, sans-serif;
+  --cv-black: #000;
+  --cv-white: #fff;
+  --cv-crocus: #844896;
+  --cv-crocus-200: #e7d5ef;
+  --cv-crocus-400: #c397d8;
+  --cv-grey-400: #b3b5c8;
+  --cv-grey-700: #5c5f6b;
+  --cv-grey-800: #3d3f48;
+  --cv-focus-ring: #d2b1e2;
+  --cv-container: 82rem;
 }
+
+@media (width >= 1100px) {
+  :root {
+    --header-height: 112px;
+  }
+}
+
 
 .light-scheme {
   color-scheme: light;
@@ -373,6 +393,7 @@ svg {
 @media (width >= 1440px) {
   :root {
     --grid-container-width: 1200px;
+    --header-height: 120px;
   }
 }
 
