@@ -1,0 +1,234 @@
+/* persona-articles — commvault.com card grid (black vertical cards) on a white band */
+main .section:has(.persona-articles) {
+  background-color: var(--cv-white);
+  color: var(--cv-black);
+  color-scheme: light;
+}
+
+.persona-articles {
+  width: min(82rem, 100% - 32px);
+  margin: 0 auto;
+  padding-block: 64px;
+  font-family: var(--cv-font);
+  text-align: left;
+}
+
+.persona-articles-head > * {
+  margin: 0;
+}
+
+.persona-articles-eyebrow {
+  margin-bottom: 12px;
+  color: var(--cv-crocus);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.875px;
+  text-transform: uppercase;
+}
+
+.persona-articles .persona-articles-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw + 1rem, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+/* explicit "I'm a…" role picker */
+.persona-articles-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.persona-articles-picker-label {
+  margin-right: 4px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.persona-articles-chip {
+  min-height: 40px;
+  padding: 8px 18px;
+  border: 1px solid var(--cv-grey-400);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cv-black);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.persona-articles-chip:hover {
+  border-color: var(--cv-crocus);
+}
+
+.persona-articles-chip:focus-visible {
+  outline: 3px solid var(--cv-focus-ring);
+  outline-offset: 2px;
+}
+
+.persona-articles-chip[aria-pressed="true"] {
+  border-color: var(--cv-crocus);
+  background-color: var(--cv-crocus);
+  color: var(--cv-white);
+}
+
+.persona-articles-status {
+  min-height: 1.4em;
+  margin: 16px 0 32px;
+  color: var(--cv-grey-700);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.persona-articles-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.persona-article-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--cv-black);
+  color: var(--cv-white);
+}
+
+.persona-article-image {
+  line-height: 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+}
+
+.persona-article-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-grow: 1;
+  padding: 32px 32px 16px;
+
+  > * {
+    margin: 0;
+  }
+}
+
+.persona-article-eyebrow {
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.875px;
+  text-transform: uppercase;
+}
+
+.persona-articles .persona-article-title {
+  font-size: clamp(1.1875rem, 5vw + 1rem, 1.4375rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.persona-article-dek {
+  margin-top: 12px;
+  color: var(--cv-grey-400);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.persona-article-body > .persona-article-cta {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+/* btn-text with an arrow; the whole card is the hit area */
+.persona-article-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+  border-bottom: 1px solid transparent;
+  color: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-decoration: none;
+  transition: border-color 0.2s ease-in-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  &::after {
+    content: "";
+    flex: none;
+    width: 16px;
+    height: 16px;
+    background: currentcolor;
+    mask: var(--cv-arrow) center / contain no-repeat;
+  }
+}
+
+.persona-article-card:hover .persona-article-link {
+  border-bottom-color: var(--cv-crocus);
+}
+
+/* brief fade-in when the audience (and therefore the card set) changes */
+.persona-articles.is-updated .persona-article-card {
+  animation: persona-article-in 0.4s ease both;
+}
+
+.persona-articles.is-updated .persona-article-card:nth-child(2) {
+  animation-delay: 60ms;
+}
+
+.persona-articles.is-updated .persona-article-card:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+@keyframes persona-article-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .persona-articles.is-updated .persona-article-card {
+    animation: none;
+  }
+}
+
+@media (width >= 1100px) {
+  .persona-articles {
+    width: min(82rem, 100% - 128px);
+    padding-block: 96px;
+  }
+
+  .persona-articles-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
