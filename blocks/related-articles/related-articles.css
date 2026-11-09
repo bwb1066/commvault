@@ -4,7 +4,7 @@
  * vertical list of article links.
  */
 
-.related-articles.block {
+.related-articles {
   box-sizing: border-box;
   padding: 32px;
   border: 1px solid var(--related-articles-border, #e6e6e6);
@@ -14,13 +14,13 @@
 
 /* Keep it in view while the main column scrolls (right-rail use). */
 @media (width >= 900px) {
-  .related-articles.block {
+  .related-articles {
     position: sticky;
     top: 24px;
   }
 }
 
-.related-articles.block .related-articles-eyebrow {
+.related-articles .related-articles-eyebrow {
   margin: 0 0 20px;
   font-size: 13px;
   font-weight: 700;
@@ -29,24 +29,24 @@
   color: var(--text-color, #1a1a1a);
 }
 
-.related-articles.block .related-articles-list {
+.related-articles .related-articles-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.related-articles.block .related-articles-list li {
+.related-articles .related-articles-list li {
   margin: 0;
   padding: 16px 0;
   border-top: 1px solid var(--related-articles-border, #e6e6e6);
 }
 
-.related-articles.block .related-articles-list li:first-child {
+.related-articles .related-articles-list li:first-child {
   border-top: 0;
   padding-top: 0;
 }
 
-.related-articles.block .related-articles-list a {
+.related-articles .related-articles-list a {
   display: block;
   font-size: 16px;
   font-weight: 600;
@@ -55,6 +55,6 @@
   text-decoration: none;
 }
 
-.related-articles.block .related-articles-list a:hover {
+.related-articles .related-articles-list a:hover {
   text-decoration: underline;
 }
