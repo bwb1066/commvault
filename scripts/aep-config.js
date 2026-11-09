@@ -16,7 +16,7 @@ export default {
   // per-site string; copy it from the real schema. Leave as a placeholder
   // until one exists — events will simply fail schema validation
   // (harmlessly) until it's corrected.
-  tenantId: '_yourtenantid',
+  tenantId: '_demosystem4',
 
   // This replica's identifier, included on every tracked event so a
   // datastream/schema SHARED across multiple sites can still be filtered
