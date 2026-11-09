@@ -1,6 +1,8 @@
 import ENV from './utils/env.js';
 import { getConfig, loadStyle } from './ak.js';
 import { SPARKLE_SVG } from './sparkle-icon.js';
+import initWebSDK from './websdk.js';
+import initPersonalization from './personalization.js';
 
 /**
  * Brand Concierge floating bubble (commvault's header has no icon-only
@@ -31,7 +33,14 @@ async function loadSidekick() {
   if (sk) import('../tools/sidekick/sidekick.js').then((mod) => mod.default(sk));
 }
 
-(function loadLazy() {
+(async function loadLazy() {
+  // Adobe Web SDK + audience tracking (?demo opens the Web SDK inspector)
+  const demoPanel = await import('./demo-panel.js');
+  if (demoPanel.demoEnabled()) demoPanel.default();
+
+  initWebSDK();
+  initPersonalization();
+
   import('./utils/lazyhash.js');
   import('./utils/favicon.js');
   import('./utils/footer.js').then(({ default: footer }) => footer());
