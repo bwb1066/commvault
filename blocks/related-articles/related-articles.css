@@ -1,0 +1,60 @@
+/*
+ * Related Articles block
+ * A right-rail card: rounded corners, subtle border, eyebrow heading,
+ * vertical list of article links.
+ */
+
+.related-articles.block {
+  box-sizing: border-box;
+  padding: 32px;
+  border: 1px solid var(--related-articles-border, #e6e6e6);
+  border-radius: 16px;
+  background: var(--related-articles-bg, #fff);
+}
+
+/* Keep it in view while the main column scrolls (right-rail use). */
+@media (width >= 900px) {
+  .related-articles.block {
+    position: sticky;
+    top: 24px;
+  }
+}
+
+.related-articles.block .related-articles-eyebrow {
+  margin: 0 0 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-color, #1a1a1a);
+}
+
+.related-articles.block .related-articles-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related-articles.block .related-articles-list li {
+  margin: 0;
+  padding: 16px 0;
+  border-top: 1px solid var(--related-articles-border, #e6e6e6);
+}
+
+.related-articles.block .related-articles-list li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.related-articles.block .related-articles-list a {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--related-articles-link, #6e4bd0);
+  text-decoration: none;
+}
+
+.related-articles.block .related-articles-list a:hover {
+  text-decoration: underline;
+}
