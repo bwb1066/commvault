@@ -43,24 +43,32 @@ export default {
     {
       // CISO / SecOps: ransomware, threat detection, clean recovery, identity.
       key: 'security_leader',
+      // on-page topic tab (persona-articles) — visitors pick topics, not roles
+      topic: 'Ransomware & threats',
       label: 'Security Leader',
       match: /\bciso\b|secops|\bsoc\b|ransomware|malware|threat|attack|breach|incident|cyber|xdr|siem|anomal|cleanroom|clean recovery|identity|active directory|entra|okta|zero trust|vulnerab/i,
     },
     {
       // Runs backup & data protection day to day: workloads, SaaS, hybrid.
       key: 'it_ops',
+      // on-page topic tab (persona-articles) — visitors pick topics, not roles
+      topic: 'Backup & workloads',
       label: 'IT & Backup Admin',
       match: /backup|restore|data protection|snapshot|vmware|hyper-?v|virtual machine|\bvm\b|database|sql|oracle|m365|microsoft 365|office 365|exchange|sharepoint|onedrive|teams|salesforce|jira|power platform|saas|kubernetes|\bnas\b|file server|tape|hybrid/i,
     },
     {
       // CIO / board: continuity, risk, compliance, sovereignty, ROI, AI strategy.
       key: 'business_leader',
+      // on-page topic tab (persona-articles) — visitors pick topics, not roles
+      topic: 'Resilience strategy',
       label: 'Executive & Business Leader',
       match: /\bcio\b|\bceo\b|\bcfo\b|board|executive|business continuity|downtime|risk|complian|regulat|dora|nis2|sovereign|governance|\broi\b|cost|budget|strategy|resops|resilience operations|maturity|insurance/i,
     },
     {
       // Builds on public cloud: AWS/Azure/GCP, IaC, cloud-native, automation.
       key: 'cloud_architect',
+      // on-page topic tab (persona-articles) — visitors pick topics, not roles
+      topic: 'Cloud & automation',
       label: 'Cloud Architect',
       match: /\baws\b|amazon|\bs3\b|ec2|dynamodb|azure|google cloud|\bgcp\b|cloud-native|cloud native|multi-?cloud|terraform|infrastructure as code|\biac\b|devops|api|automation|clumio|cloud rewind|serverless|architect/i,
     },

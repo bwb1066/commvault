@@ -34,19 +34,13 @@ main .section:has(.persona-articles) {
   line-height: 1.08;
 }
 
-/* explicit "I'm a…" role picker */
+/* explicit topic tabs */
 .persona-articles-picker {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin-top: 32px;
-}
-
-.persona-articles-picker-label {
-  margin-right: 4px;
-  font-size: 16px;
-  font-weight: 500;
+  margin: 32px 0 40px;
 }
 
 .persona-articles-chip {
@@ -76,14 +70,6 @@ main .section:has(.persona-articles) {
   border-color: var(--cv-crocus);
   background-color: var(--cv-crocus);
   color: var(--cv-white);
-}
-
-.persona-articles-status {
-  min-height: 1.4em;
-  margin: 16px 0 32px;
-  color: var(--cv-grey-700);
-  font-size: 15px;
-  line-height: 1.4;
 }
 
 .persona-articles-grid {

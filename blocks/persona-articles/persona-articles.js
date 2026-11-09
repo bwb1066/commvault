@@ -6,10 +6,11 @@ import { track, classify, recordSignal } from '../../scripts/personalization.js'
  * that re-selects itself for the visitor's audience.
  *
  * Personalization is both:
- *  - explicit: an "I'm a…" role picker in the block. A pick is stored as the
- *    same sessionStorage override the ?demo panel uses (so it sticks across
- *    pages and wins over inferred signals), sent to AEP, and broadcast as
- *    `p13n:change`.
+ *  - explicit: topic tabs (each audience's `topic` in aep-config). Visitors
+ *    pick a topic, never a role — the persona itself is only surfaced in the
+ *    ?demo inspector. A pick is stored as the same sessionStorage override the
+ *    demo panel uses (so it sticks across pages and wins over inferred
+ *    signals), sent to AEP, and broadcast as `p13n:change`. "Featured" clears it.
  *  - implicit: personalization.js infers the leading audience from Brand
  *    Concierge chat turns and audience-tagged page views; card clicks here add
  *    to that tally too (articles open in a new tab, so the rail visibly
@@ -25,8 +26,6 @@ import { track, classify, recordSignal } from '../../scripts/personalization.js'
 const AUD_GLOBAL = config.audienceGlobal || 'aepAudience';
 const OVERRIDE_KEY = config.storageKeys?.override || 'aep_audience_override';
 const AUDIENCES = config.audiences || [];
-
-const labelFor = (key) => AUDIENCES.find((a) => a.key === key)?.label;
 
 function readOverride() {
   try {
@@ -126,29 +125,30 @@ export default function decorate(block) {
   if (!keys.length) return;
 
   const head = el('div', 'persona-articles-head');
-  const eyebrow = el('p', 'persona-articles-eyebrow', 'Recommended for you');
+  const eyebrow = el('p', 'persona-articles-eyebrow', 'From the blog');
   const title = el('h2', 'persona-articles-title', heading || 'Insights for what you’re solving');
   head.append(eyebrow, title);
 
-  // Explicit picker — only roles that have authored content.
+  // Topic tabs — only audiences with authored content; "Featured" = default set.
   const picker = el('div', 'persona-articles-picker');
   picker.setAttribute('role', 'group');
-  picker.setAttribute('aria-label', 'Personalize recommendations by role');
-  picker.append(el('span', 'persona-articles-picker-label', 'I’m a'));
-  const roles = AUDIENCES.filter((a) => groups[a.key]);
-  const chips = roles.map(({ key, label }) => {
-    const b = el('button', 'persona-articles-chip', label);
+  picker.setAttribute('aria-label', 'Filter articles by topic');
+  const tabs = [
+    ...(groups.default ? [{ key: '', topic: 'Featured' }] : []),
+    ...AUDIENCES.filter((a) => groups[a.key] && a.topic),
+  ];
+  const chips = tabs.map(({ key, topic }) => {
+    const b = el('button', 'persona-articles-chip', topic);
     b.type = 'button';
     b.dataset.key = key;
     return b;
   });
   picker.append(...chips);
 
-  const status = el('p', 'persona-articles-status');
-  status.setAttribute('aria-live', 'polite');
   const grid = el('ul', 'persona-articles-grid');
+  grid.setAttribute('aria-live', 'polite');
 
-  block.replaceChildren(head, picker, status, grid);
+  block.replaceChildren(head, picker, grid);
 
   const pickKey = (aud) => {
     if (aud && groups[aud]) return aud;
@@ -159,17 +159,8 @@ export default function decorate(block) {
   const render = (aud) => {
     const key = pickKey(aud);
     const explicit = !!readOverride() && key === readOverride();
-    const label = labelFor(key);
-    chips.forEach((c) => {
-      c.setAttribute('aria-pressed', String(explicit && c.dataset.key === key));
-    });
-    if (key === 'default' || !label) {
-      status.textContent = 'Popular with Commvault readers. Tell us your role to tailor these picks.';
-    } else if (explicit) {
-      status.textContent = `Showing picks for ${label}s, based on the role you chose.`;
-    } else {
-      status.textContent = `Showing picks for ${label}s, based on what you’ve explored.`;
-    }
+    const tabKey = key === 'default' ? '' : key;
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.key === tabKey)));
     block.dataset.audience = key;
     block.dataset.mode = (key !== 'default' && (explicit ? 'explicit' : 'implicit')) || 'default';
     if (key === shown) return;
@@ -182,8 +173,7 @@ export default function decorate(block) {
   };
 
   chips.forEach((chip) => chip.addEventListener('click', () => {
-    // Clicking the active role again clears the explicit choice.
-    const key = chip.getAttribute('aria-pressed') === 'true' ? '' : chip.dataset.key;
+    const { key } = chip.dataset;
     try {
       if (key) sessionStorage.setItem(OVERRIDE_KEY, key);
       else sessionStorage.removeItem(OVERRIDE_KEY);
