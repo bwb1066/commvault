@@ -36,7 +36,7 @@ bwb1066-ak-base       (this repo: AK + baked-in aem-* blocks)
 ## DA blocks
 
 `reference/da-library/` holds a sample doc per `aem-*` block plus `blocks-sheet.csv`.
-These must be installed in DA by hand (no API): create the sample docs under
+These will be installed in DA (MCP): create the sample docs under
 `bwb1066-ak-base/docs/library/blocks` in DA and append the CSV rows to the sheet
 your site config's `library` tab points at. See `reference/da-library/README.md`.
 
