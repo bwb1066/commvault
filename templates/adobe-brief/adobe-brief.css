@@ -1,0 +1,391 @@
+/*
+ * adobe-brief template — Adobe-branded briefs hosted on this site
+ * (page metadata `template: adobe-brief`, `header: off`, `footer: off`).
+ * Everything is scoped to body.adobe-brief-template so commvault pages are
+ * untouched. Tokens and type scale are taken 1:1 from commvault-two-pager.html.
+ */
+
+@font-face {
+  font-family: "Adobe Clean";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/adobe-clean-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Adobe Clean";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/adobe-clean-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Adobe Clean";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("fonts/adobe-clean-900.woff2") format("woff2");
+}
+
+/* Arial metric-matched to Adobe Clean Regular, so the swap doesn't shift layout */
+@font-face {
+  font-family: "Adobe Clean Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans");
+  size-adjust: 91.04%;
+  ascent-override: 111.27%;
+  descent-override: 26.25%;
+  line-gap-override: 0%;
+}
+
+body.adobe-brief-template {
+  --red: #eb1000;
+  --red-hover: #c80e00;
+  --ink: #222;
+  --secondary: #505050;
+  --line: #d9d9d9;
+  --wash: #f5f5f5;
+  --white: #fff;
+  --red-soft: #fff0ee;
+  --radius: 12px;
+  --bar: 64px;
+  --foot: 44px;
+  --brief-font: "Adobe Clean", "Adobe Clean Fallback", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --cta-color: var(--ink);
+  --cta-color-hover: #000;
+
+  color-scheme: light;
+  margin: 0;
+  padding: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--brief-font);
+  line-height: 1.5;
+
+  :focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 4px;
+  }
+
+  /* Brand Concierge bubble: sit above the page pager */
+  .chatbot-bubble {
+    bottom: calc(var(--foot) + 16px);
+  }
+}
+
+/* ---------- type, links, buttons ---------- */
+.adobe-brief-template main {
+  h1,
+  h2,
+  h3,
+  p,
+  ul {
+    margin: 0;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 4px;
+
+    &:hover {
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  h1 {
+    max-width: 15ch;
+    font-size: clamp(34px, min(4.4vw, 7vh), 60px);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
+  }
+
+  h2 {
+    font-size: clamp(26px, min(3vw, 5vh), 40px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-weight: 700;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  code {
+    padding: 1px 8px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    color: var(--ink);
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 13px;
+  }
+}
+
+/* outranks the site's section heading + button rules (main .section …) */
+.adobe-brief-template main .section {
+  > .default-content {
+    max-width: none;
+    margin: 0;
+    font-family: var(--brief-font);
+  }
+
+  > .default-content > h2:nth-child(n) {
+    margin: 0;
+    font-size: clamp(26px, min(3vw, 5vh), 40px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  .btn-group {
+    gap: 12px;
+    margin-top: clamp(14px, 3vh, 28px);
+  }
+
+  a.btn-primary,
+  a.btn-secondary {
+    --btn-bg: var(--white);
+    --btn-border: var(--ink);
+    --btn-text: var(--ink);
+
+    justify-content: center;
+    gap: 0;
+    min-height: 48px;
+    padding: 10px 24px;
+    border: 1px solid var(--btn-border);
+    border-radius: 999px;
+    font-family: var(--brief-font);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.2;
+    text-decoration: none;
+
+    &::after {
+      content: none;
+    }
+
+    &:hover {
+      --btn-bg: var(--ink);
+      --btn-border: var(--ink);
+      --btn-text: var(--white);
+    }
+  }
+
+  a.btn-primary {
+    --btn-bg: var(--red);
+    --btn-border: var(--red);
+    --btn-text: var(--white);
+
+    &:hover {
+      --btn-bg: var(--red-hover);
+      --btn-border: var(--red-hover);
+      --btn-text: var(--white);
+    }
+  }
+
+  /* external links (marked by brief-tabs) get a ↗ */
+  a.ext::after {
+    content: " \2197";
+    width: auto;
+    height: auto;
+    background: none;
+    font-weight: 400;
+    mask: none;
+  }
+}
+
+/* ---------- screens (one section per tab, see brief-tabs) ---------- */
+.adobe-brief-template main > .section.brief-screen {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 28px 20px 36px;
+
+  &[hidden] {
+    display: none;
+  }
+
+  /* eyebrow: a short paragraph right before the screen heading */
+  > .default-content > p:has(+ h1, + h2) {
+    margin-bottom: clamp(8px, 1.6vh, 16px);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* lead: the paragraph right after the screen heading */
+  > .default-content > :is(h1, h2) + p {
+    max-width: 44ch;
+    margin-top: clamp(10px, 2vh, 20px);
+    color: var(--secondary);
+    font-size: clamp(15px, 2.2vh, 19px);
+  }
+
+  /* inline code + copy button (recording password) */
+  > .default-content > p:has(> code) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    color: var(--secondary);
+    font-size: 13px;
+  }
+
+  .brief-copy {
+    min-height: 28px;
+    padding: 1px 12px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 700;
+
+    &:hover {
+      background: var(--ink);
+      color: var(--white);
+    }
+  }
+}
+
+/* style "split": copy on the left (red rule), a block on the right */
+.adobe-brief-template main > .section.split {
+  display: grid;
+  gap: 24px;
+
+  > .default-content {
+    padding-left: 16px;
+    border-left: 4px solid var(--red);
+  }
+}
+
+/* style "stack": heading, block(s) and a closing row, vertically centred */
+.adobe-brief-template main > .section.stack {
+  display: grid;
+  align-content: center;
+  gap: clamp(14px, 3vh, 28px);
+
+  > .default-content > :is(h1, h2) + p {
+    max-width: 70ch;
+  }
+}
+
+/* style "loop": closing row = a Find → Fix → Measure list + a button */
+.adobe-brief-template main > .section.loop > .default-content:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  > ul > li {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  > ul > li:not(:last-child)::after {
+    content: "\2192";
+    color: var(--secondary);
+  }
+
+  /* each step is wrapped in .brief-step by brief-tabs; the bold one is "hot" */
+  > ul > li > .brief-step {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 20px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    background: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  > ul > li > strong.brief-step {
+    border-color: var(--red);
+    background: var(--red);
+    color: var(--white);
+  }
+
+  .btn-group {
+    margin-top: 0;
+  }
+}
+
+/* style "full": the screen is one full-bleed block (an iframe) */
+.adobe-brief-template main > .section.brief-screen.full {
+  max-width: none;
+  height: calc(100dvh - var(--bar) - var(--foot));
+  padding: 0;
+}
+
+@media (width <= 560px) {
+  .adobe-brief-template main {
+    h1 {
+      font-size: 38px;
+    }
+
+    .section .btn-group a.btn {
+      width: 100%;
+    }
+  }
+}
+
+/* desktop: each screen fits the window, like a slide */
+@media (width >= 1100px) and (height >= 600px) {
+  .adobe-brief-template main > .section.brief-screen {
+    height: calc(100dvh - var(--bar) - var(--foot));
+    padding: clamp(20px, 4vh, 48px) 32px;
+  }
+
+  .adobe-brief-template main > .section.split {
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+
+    > .default-content {
+      padding-left: clamp(20px, 3vw, 40px);
+    }
+  }
+
+  .adobe-brief-template main > .section.brief-screen.full {
+    padding: 0;
+  }
+}
+
+@media print {
+  .adobe-brief-template main > .section.brief-screen,
+  .adobe-brief-template main > .section.brief-screen[hidden] {
+    display: grid;
+    height: auto;
+    break-after: page;
+  }
+
+  .adobe-brief-template .brief-copy {
+    display: none;
+  }
+}
