@@ -63,24 +63,6 @@ function markExternal(root) {
   });
 }
 
-// Inline `code` (e.g. a recording password) gets a Copy button.
-function addCopyButtons(root) {
-  root.querySelectorAll('.default-content p > code').forEach((code) => {
-    const btn = el('button', { type: 'button', class: 'brief-copy' }, 'Copy');
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(code.textContent.trim());
-        btn.textContent = 'Copied';
-      } catch (e) {
-        btn.textContent = 'Press ⌘C';
-        window.getSelection()?.selectAllChildren(code);
-      }
-      setTimeout(() => { btn.textContent = 'Copy'; }, 1600);
-    });
-    code.after(' ', btn);
-  });
-}
-
 // Section style "loop": wrap each list step in a pill; the bold one is "hot".
 function decorateLoops(root) {
   root.querySelectorAll('.section.loop .default-content > ul > li').forEach((li) => {
@@ -210,7 +192,6 @@ export default function init(block) {
   // ---- mount ----
   markExternal(main);
   markExternal(bar);
-  addCopyButtons(main);
   decorateLoops(main);
   main.before(bar);
   main.after(foot);

@@ -235,33 +235,6 @@ body.adobe-brief-template {
     color: var(--secondary);
     font-size: clamp(15px, 2.2vh, 19px);
   }
-
-  /* inline code + copy button (recording password) */
-  > .default-content > p:has(> code) {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    margin-top: 14px;
-    color: var(--secondary);
-    font-size: 13px;
-  }
-
-  .brief-copy {
-    min-height: 28px;
-    padding: 1px 12px;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    background: var(--white);
-    color: var(--ink);
-    font-size: 12px;
-    font-weight: 700;
-
-    &:hover {
-      background: var(--ink);
-      color: var(--white);
-    }
-  }
 }
 
 /* style "split": copy on the left (red rule), a block on the right */
@@ -389,9 +362,5 @@ body.adobe-brief-template {
     display: grid;
     height: auto;
     break-after: page;
-  }
-
-  .adobe-brief-template .brief-copy {
-    display: none;
   }
 }
