@@ -284,6 +284,12 @@ body.adobe-brief-template {
   > .default-content > :is(h1, h2) + p {
     max-width: 70ch;
   }
+
+  /* consecutive blocks (tiles + columns brief) share one block-content */
+  > .block-content {
+    display: grid;
+    gap: clamp(14px, 3vh, 28px);
+  }
 }
 
 /* style "loop": closing row = a Find → Fix → Measure list + a button */

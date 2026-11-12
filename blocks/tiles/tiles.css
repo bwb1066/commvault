@@ -1,0 +1,85 @@
+/* tiles — five capability tiles (values from the two-pager) */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  color: var(--ink, #222);
+
+  .tile {
+    display: flex;
+    flex-direction: column;
+    min-height: clamp(200px, 30vh, 300px);
+    padding: clamp(16px, 2.6vh, 24px);
+    border: 1px solid var(--line, #d9d9d9);
+    border-top: 3px solid var(--ink, #222);
+    border-radius: var(--radius, 12px);
+    background: var(--white, #fff);
+  }
+
+  .tile.hot {
+    border: 1px solid var(--ink, #222);
+    border-top: 4px solid var(--red, #eb1000);
+    background: var(--red-soft, #fff0ee);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .tile-verb {
+    color: var(--red, #eb1000);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 6px 0 0;
+    font-size: clamp(17px, min(1.5vw, 2.6vh), 21px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+  }
+
+  .tile-prod {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .tile-desc {
+    margin-top: clamp(8px, 1.6vh, 14px);
+    color: var(--secondary, #505050);
+    font-size: clamp(13px, 1.9vh, 15px);
+  }
+
+  .tile-src {
+    margin-top: auto;
+    padding-top: 12px;
+    font-size: 13px;
+  }
+}
+
+@media (width <= 1099px) {
+  .tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+
+    .tile {
+      min-height: 0;
+      padding: 14px;
+    }
+
+    .tile-desc {
+      font-size: 13px;
+    }
+  }
+}
+
+@media (width <= 560px) {
+  .tiles {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

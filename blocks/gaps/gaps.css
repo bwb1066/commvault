@@ -1,0 +1,93 @@
+/* gaps — three cards whose rows align across cards (subgrid), from the two-pager */
+.gaps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto auto 1fr;
+  gap: 0 16px;
+  color: var(--ink, #222);
+
+  .gap {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    overflow: hidden;
+    border: 1px solid var(--line, #d9d9d9);
+    border-radius: var(--radius, 12px);
+    background: var(--white, #fff);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  header {
+    padding: clamp(12px, 2.2vh, 20px) 20px;
+    border-bottom: 1px solid var(--line, #d9d9d9);
+  }
+
+  .gap-n {
+    color: var(--red, #eb1000);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 2px 0 0;
+    font-size: clamp(18px, 2.6vh, 21px);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  header p:not(.gap-n) {
+    color: var(--secondary, #505050);
+    font-size: 14px;
+  }
+
+  .gap-signal {
+    padding: clamp(10px, 1.8vh, 16px) 20px;
+    color: var(--secondary, #505050);
+    font-size: 14px;
+  }
+
+  .gap-label {
+    margin-bottom: 4px;
+    color: var(--ink, #222);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .gap-fix {
+    padding: clamp(12px, 2.2vh, 20px) 20px;
+    border-left: 4px solid var(--red, #eb1000);
+    background: var(--red-soft, #fff0ee);
+    color: var(--ink, #222);
+    font-size: clamp(15px, 2.2vh, 18px);
+    line-height: 1.35;
+  }
+
+  .gap-fix .gap-label {
+    color: var(--red, #eb1000);
+  }
+
+  .gap-note {
+    margin-top: 8px;
+    color: var(--secondary, #505050);
+    font-size: 13px;
+  }
+}
+
+@media (width <= 1099px) {
+  .gaps {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 14px;
+
+    .gap {
+      grid-row: auto;
+      grid-template-rows: auto;
+    }
+  }
+}
