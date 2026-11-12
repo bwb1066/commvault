@@ -46,12 +46,16 @@ function readRows(block) {
   return rows;
 }
 
-// External links open in a new tab and get the ↗ marker (CSS: a.ext::after).
+// Links that leave the brief open in a new tab and get the ↗ marker
+// (CSS: a.ext::after). EDS rewrites links to this site's own .aem.live/.page
+// host to relative paths (/?demo), so "leaves" means another page, not just
+// another host; #tab links and mailto: stay as they are.
 function markExternal(root) {
   root.querySelectorAll('a[href]').forEach((a) => {
-    const href = a.getAttribute('href');
-    if (!/^https?:\/\//i.test(href)) return;
-    if (new URL(href).host === window.location.host) return;
+    if (a.closest('.frame')) return;
+    const url = new URL(a.getAttribute('href'), window.location.href);
+    if (!/^https?:$/.test(url.protocol)) return;
+    if (url.host === window.location.host && url.pathname === window.location.pathname) return;
     a.target = '_blank';
     a.rel = 'noopener';
     // the two-pager's red primary buttons carry no ↗
