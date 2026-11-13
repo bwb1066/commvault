@@ -148,6 +148,12 @@ export default function init(block) {
   let current = -1;
   const show = (i, { focus = false, scroll = true, hash = true } = {}) => {
     if (i < 0 || i >= items.length) return;
+    if (current !== -1 && current !== i) {
+      // Visit alerts (scripts/utils/beacon.js) log tab views when present.
+      document.dispatchEvent(new CustomEvent('beacon:event', {
+        detail: { label: `Tab: ${items[i].label}` },
+      }));
+    }
     current = i;
     items.forEach((item, k) => {
       const on = k === i;
